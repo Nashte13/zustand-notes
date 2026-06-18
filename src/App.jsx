@@ -15,17 +15,8 @@ const App = () => {
 
   return (
     <div>
-      <form onSubmit={addNote}>
-        <input name="note" />
-        <button type='submit'>Add Note</button>
-      </form>
-      <ul>
-        {notes.map(note => (
-          <li key={note.id}>
-            {note.important ? <strong>{note.content}</strong> : note.content}
-          </li>
-        ))}
-      </ul>
+      <NoteForm />
+      <NoteList />
     </div>
   )
 }
