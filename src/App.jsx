@@ -1,4 +1,3 @@
-import { useNotes } from './store'
 import NoteList from './components/NoteList'
 import NoteForm from './components/NoteForm'
 
