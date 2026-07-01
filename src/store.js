@@ -1,7 +1,25 @@
 import { create } from 'zustand'
 
+const initialNotes = [
+    {
+        id: 1,
+        content: 'Zustand is a state management library',
+        important: true
+    },
+    {
+        id: 2,
+        content: 'It is a small, fast and scalable bearbones state-management solution',
+        important: false
+    },
+    {
+        id: 3,
+        content: 'It has a minimal API and is easy to learn',
+        important: true
+    }
+]
+
 const useNoteStore = create(set => ({
-    notes: [],
+    notes: initialNotes,
     actions: {
         add: note => set(
             state => ({notes: state.notes.concat(note)})
