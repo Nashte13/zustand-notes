@@ -3,13 +3,6 @@ import Note from './Note'
 
 const NoteList = () => {
     const notes = useNotes()
-    const filter = useFilter()
-
-    const notesToShow = notes.filter(note => {
-        if (filter === 'important') return note.important
-        if (filter === 'nonimportant') return !note.important
-        return true
-    })
 
     return (
         <ul>
