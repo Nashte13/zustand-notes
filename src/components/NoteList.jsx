@@ -1,4 +1,4 @@
-import { useNotes, useFilter } from '../store'
+import { useNotes } from '../store'
 import Note from './Note'
 
 const NoteList = () => {
@@ -6,7 +6,7 @@ const NoteList = () => {
 
     return (
         <ul>
-            {notesToShow.map(note => (
+            {notes.map(note => (
                 <Note key={note.id} note={note} />
             ))}
         </ul>
