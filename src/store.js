@@ -20,6 +20,7 @@ const initialNotes = [
 
 const useNoteStore = create(set => ({
     notes: initialNotes,
+    filter: 'all',
     actions: {
         add: note => set(
             state => ({notes: state.notes.concat(note)})
@@ -30,9 +31,11 @@ const useNoteStore = create(set => ({
                     note.id === id ? {...note, important: !note.important} : note
                 )
             })
-        )
+        ),
+        setFilter: value => set(() => ({filter: value}))
     }
 }))
 
 export const useNotes = () => useNoteStore(state => state.notes)
+export const useFilter = () =>useNoteStore((state) => state.filter)
 export const useNoteActions = () => useNoteStore(state => state.actions)
