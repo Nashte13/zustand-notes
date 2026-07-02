@@ -37,5 +37,5 @@ const useNoteStore = create(set => ({
 }))
 
 export const useNotes = () => useNoteStore(state => state.notes)
-export const useFilter = () =>useNoteStore((state) => state.filter)
+export const useFilter = () =>useNoteStore((state) => state.filter)  
 export const useNoteActions = () => useNoteStore(state => state.actions)
