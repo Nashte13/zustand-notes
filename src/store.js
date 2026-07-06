@@ -2,11 +2,11 @@ import { create } from 'zustand'
 
 
 const useNoteStore = create(set => ({
-    notes: initialNotes,
+    notes: [],
     filter: 'all',
     actions: {
         add: note => set(
-            state => ({notes: state.notes.concat(note)})
+            state => ({ notes: state.notes.concat(note) })
         ),
         toggleImportance: id => set(
             state => ({
@@ -15,7 +15,8 @@ const useNoteStore = create(set => ({
                 )
             })
         ),
-        setFilter: value => set(() => ({filter: value}))
+        setFilter: value => set(() => ({ filter: value })),
+        initialize: notes => set(() => ({ notes }))
     }
 }))
 
