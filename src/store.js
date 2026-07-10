@@ -10,6 +10,16 @@ const useNoteStore = create(set => ({
             const newNote = await noteService.createNew(content)
             set(state => ({notes: state.notes.concat(newNote)}))
         },
+        toggleImportance: async (id) => {
+            const note = useNoteStore.getState().notes.find(n => n.id === id)
+            const updated = await noteService.update(
+                id, {...note, important: !note.important}
+            )
+
+            set(state => ({
+                notes: state.notes.map(n => n.id === id ? updated : n)
+            }))
+        },
         initialize: async () => {
             const notes = await noteService.getAll()
             set(() => ({notes}))
