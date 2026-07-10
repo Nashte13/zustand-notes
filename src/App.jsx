@@ -7,10 +7,10 @@ import { useEffect } from 'react'
 
 const App = () => {
   const { initialize } = useNoteActions()
-  
+
   useEffect(() => {
-    noteService.getAll().then(notes => initialize(notes))
-  }, {initialize})
+    initialize()
+  }, [initialize] )
 
   return (
     <div>
