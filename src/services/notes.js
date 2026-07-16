@@ -11,7 +11,7 @@ const getAll = async () => {
 
 const createNew = async (content) => {
     const options = {
-        methos: 'POST',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
