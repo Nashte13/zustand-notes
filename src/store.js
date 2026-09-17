@@ -1,6 +1,5 @@
-import { create } from 'zustand'
-import noteService from './services/notes'
-
+import { create } from "zustand";
+import noteService from "./services/notes";
 
 const useNoteStore = create((set) => ({
   notes: [],
@@ -30,9 +29,11 @@ const useNoteStore = create((set) => ({
 }));
 
 export const useNotes = () => {
-    const notes = useNoteStore(state => state.notes)
-    const filter = useNoteStore(state => state.filter)
-    if (filter === 'important') return notes.filter(n => n.important)
-    if (filter === 'nonimportant') return notes.filter(n => !n.important)
-    return notes
-}
+  const notes = useNoteStore((state) => state.notes);
+  const filter = useNoteStore((state) => state.filter);
+  if (filter === "important") return notes.filter((n) => n.important);
+  if (filter === "nonimportant") return notes.filter((n) => !n.important);
+  return notes;
+};
+
+export const useNoteActions = () => useNoteStore((state) => state.actions);
