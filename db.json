@@ -1,19 +1,25 @@
 {
-    "notes": [
-         {
-        "id": 1,
-        "content": "Zustand is a state management library",
-        "important": true
+  "notes": [
+    {
+      "id": "1",
+      "content": "Zustand is a state management library",
+      "important": true
     },
     {
-        "id": 2,
-        "content": "It is a small, fast and scalable bearbones state-management solution",
-        "important": false
+      "id": "2",
+      "content": "It is a small, fast and scalable bearbones state-management solution",
+      "important": false
     },
     {
-        "id": 3,
-        "content": "It has a minimal API and is easy to learn",
-        "important": true
+      "id": "3",
+      "content": "It has a minimal API and is easy to learn",
+      "important": true
+    },
+    {
+      "content": "Racing is the best sport",
+      "important": false,
+      "id": "9KwUiDEO788"
     }
-    ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

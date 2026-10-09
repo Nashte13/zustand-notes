@@ -1,7 +1,9 @@
 import { create } from "zustand";
 import noteService from "./services/notes";
+import { logger } from "zustand/middleware";
 
-const useNoteStore = create((set) => ({
+
+const useNoteStore = create(logger((set) => ({
   notes: [],
   filter: "all",
   actions: {
@@ -26,7 +28,7 @@ const useNoteStore = create((set) => ({
     },
     setFilter: (filter) => set({ filter }),
   },
-}));
+})));
 
 export const useNotes = () => {
   const notes = useNoteStore((state) => state.notes);
