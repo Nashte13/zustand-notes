@@ -16,14 +16,12 @@ const VisibilityFilter = () => {
           type="radio"
           name="filter"
           onChange={() => setFilter("important")}
-          defaultChecked
         />
         important
         <input
           type="radio"
           name="filter"
           onChange={() => setFilter("nonimportant")}
-          defaultChecked
         />not important
       </div>
     );

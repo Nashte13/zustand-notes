@@ -6,10 +6,15 @@ import { logger } from "zustand/middleware";
 const useNoteStore = create(logger((set) => ({
   notes: [],
   filter: "all",
+  notification: null,
   actions: {
     add: async (content) => {
       const newNote = await noteService.createNew(content);
-      set((state) => ({ notes: state.notes.concat(newNote) }));
+      set((state) => ({
+        notes: state.notes.concat(newNote),
+        notification: `Added note: ${newNote.content}`,
+      }))
+      setTimeout(() => set({ notification: null }), 5000);
     },
     toggleImportance: async (id) => {
       const note = useNoteStore.getState().notes.find((n) => n.id === id);
