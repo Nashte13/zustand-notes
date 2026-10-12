@@ -8,3 +8,27 @@ vi.mock('./services/notes.js', () => ({
         update: vi.fn(),
     }
 }))
+
+import noteService from './services/notes'
+import useNoteStore, { useNotes, useFilter, useNoteActions } from './store'
+
+beforeEach(() => {
+    useNoteStore.setState({ notes: [], filter: '' })
+    vi.clearAllMocks()
+})
+
+describe('useNoteActions', () => {
+    it('initializeloads notes from service', async () => {
+        const mockNotes = [{ id: 1, content: 'Test', important: false }]
+        noteService.getAll.mockResolvedValue(mockNotes)
+
+        const { result } = renderHook(() => useNoteActions())
+
+        await act(async () => {
+            await result.current.initialize()
+        })
+
+        const { result: notesResult } = renderHook(() => useNotes())
+        expect(notesResult.current).toEqual(mockNotes)
+    })
+})
