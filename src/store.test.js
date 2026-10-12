@@ -45,4 +45,19 @@ describe('useNoteActions', () => {
         const { result: notesResult } = renderHook(() => useNotes())
         expect(notesResult.current).toContainEqual(newNote)
     })
+
+    it('toggle importance flips important flag', async () => {
+        const note = { id: 1, content: 'Test', important: false }
+        useNoteStore.setState({ notes: [note] })
+        noteService.update.mockResolvedValue({ ...note, important: true })
+
+        const {result} = renderHook(() => useNoteActions())
+
+        await act(async () => {
+            await result.current.toggleImportance(1)
+        })
+
+        const { result: notesResult } = renderHook(() => useNotes())
+        expect(notesResult.current[0].important).toBe(true)
+    })
 })
