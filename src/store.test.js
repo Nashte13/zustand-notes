@@ -31,4 +31,18 @@ describe('useNoteActions', () => {
         const { result: notesResult } = renderHook(() => useNotes())
         expect(notesResult.current).toEqual(mockNotes)
     })
+
+    it('add appends a new note', async () => {
+        const newNote = { id: 2, content: 'New Note', important: false }
+        noteService.createNew.mockResolvedValue(newNote)
+
+        const { result } = renderHook(() => useNoteActions())
+
+        await act(async () => {
+            await result.current.add('New Note')
+        })
+
+        const { result: notesResult } = renderHook(() => useNotes())
+        expect(notesResult.current).toContainEqual(newNote)
+    })
 })
